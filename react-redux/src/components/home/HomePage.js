@@ -9,7 +9,7 @@ render(){
             <p>React, Redux and React Router in ES6  web apps.</p>
             <Link to="about" className="btn btn-primary btn-lg">Learn more..</Link>
         </div>
-    )
+    );
 }
 
 }
