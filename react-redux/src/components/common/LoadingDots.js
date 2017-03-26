@@ -32,7 +32,7 @@ LoadingDots.defaultProps= {
     interval:300, dots:3
 };
 
-LoadingDots.PropTypes={
+LoadingDots.propTypes={
     interval: PropTypes.number.isRequired,
     dots:PropTypes.number.isRequired
 };
