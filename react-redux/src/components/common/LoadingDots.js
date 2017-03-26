@@ -33,8 +33,8 @@ LoadingDots.defaultProps= {
 };
 
 LoadingDots.PropTypes={
-    interval: PropTypes.number,
-    dots:PropTypes.number
+    interval: PropTypes.number.isRequired,
+    dots:PropTypes.number.isRequired
 };
 
 export default LoadingDots;
