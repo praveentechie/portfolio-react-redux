@@ -9,6 +9,4 @@ const rootReducer = combineReducers({
     authors,
     ajaxCallsInProgress
 });
-
-
 export default rootReducer;

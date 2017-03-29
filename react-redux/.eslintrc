@@ -21,6 +21,11 @@
     "jquery": true,
     "mocha": true
   },
+  
+    "globals": {
+        "mocha": true
+    },
+
   "rules": {
     "quotes": 0,
     "no-console": 1,

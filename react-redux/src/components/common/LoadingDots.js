@@ -8,7 +8,6 @@ class LoadingDots extends React.Component{
 
 componentDidMount() {
     this.interval= setInterval(() => {
-        console.log("frame = " + this.state.frame);
         this.setState({
             frame:this.state.frame + 1
         });

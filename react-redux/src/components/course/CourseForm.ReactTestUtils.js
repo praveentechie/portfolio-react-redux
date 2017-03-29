@@ -1,16 +1,20 @@
-import except from 'expect';
+import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import CouserForm from './CourseForm';
+import CourseForm from './CourseForm';
 
-function setup(saving) {
+function setup() {
     let props = {
-        course: {}, saving:saving, error: {},
-        onSave: () => { },
-        onChange: () => { }
-    }
+        course: {},
+        saving: false,
+        errors: {},
+        onSave: () => {},
+        onChange: () => {}
+    };
+
+
     let renderer = TestUtils.createRenderer();
-    renderer.render(<CouserForm {...props} />);
+    renderer.render(<CourseForm {...props} />);
     let output = renderer.getRenderOutput();
 
     return {
@@ -19,17 +23,11 @@ function setup(saving) {
         renderer
     };
 }
-describe(' CourseForm vis react Test Utils', () => {
-    it('render form and h1', () => {
+
+describe('CourseForm via React Test Utils', () => {
+    it('renders form and h1', () => {
         const { output } = setup();
         expect(output.type).toBe('form');
-        let [h1] = output.props.children;
-        except(h1.type).toBe('h1');
+
     });
 });
-
-it('save button is labeled "save " when not saving', () => {
-    const { output } = setup(false);
-    const submitButton = output.props.childern[5];
-    expect(submitButton.props.value).toBe('saving....');
-})
