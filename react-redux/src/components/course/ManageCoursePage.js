@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 import toastr from 'toastr';
-
+import moment from 'moment';
 class ManageCoursePage extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -12,13 +12,33 @@ class ManageCoursePage extends React.Component {
         this.state = {
             course: Object.assign({}, this.props.course),
             errors: {},
-            saving: false
+            saving: false,
+            isSaving:true
+
         };
 
         this.updateCourseState = this.updateCourseState.bind(this);
         this.saveCourse = this.saveCourse.bind(this);
     }
-
+    componentWillUpdate(nextProps,nextState){
+        //console.log(nextProps);
+        //console.log(nextState);
+      
+        if(!nextProps.course.title){
+            if(nextState.course.authorId && nextState.course.title ){
+            //this.setState({saving : false});
+            //nextState.saving = false;
+            nextState.isSaving = false;
+             }
+        }
+        else {
+            if(nextProps.course.length === nextState.course.length){
+            //this.setState({saving : true});
+            nextState.isSaving = true;
+             }
+        }
+        
+    }
     componentWillReceiveProps(nextProps) {
         if (this.props.course.id != nextProps.course.id) {
             //necessary to populate from when existing course is loaded directly.
@@ -27,6 +47,12 @@ class ManageCoursePage extends React.Component {
     }
 
     updateCourseState(event) {
+        debugger;
+        console.log(moment)
+        var d = moment(event);
+        d.month(); // 1
+        d.format('ddd MMM DD YYYY'); // 'Mon Feb 01 2016'
+        console.log(d);
         const field = event.target.name;
         let course = this.state.course;
         course[field] = event.target.value;
@@ -35,7 +61,7 @@ class ManageCoursePage extends React.Component {
 
     saveCourse(event) {
         event.preventDefault();
-        this.setState({ saving: true });
+       this.setState({ saving: true });
         this.props.actions.saveCourse(this.state.course)
             .then(() => this.redirect())
             .catch(error => {
@@ -44,7 +70,7 @@ class ManageCoursePage extends React.Component {
             });
     }
     redirect() {
-        this.setState({ saving: false });
+//        this.setState({ saving: false });
         toastr.success('Course save');
         this.context.router.push('/courses');
     }
@@ -57,6 +83,7 @@ class ManageCoursePage extends React.Component {
                 course={this.state.course}
                 errors={this.state.errors}
                 saving={this.state.saving}
+                isSaving={this.state.isSaving}
                 />
         );
     }

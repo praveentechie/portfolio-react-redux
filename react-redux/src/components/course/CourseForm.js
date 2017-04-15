@@ -1,9 +1,11 @@
 import React from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
+import { DateField } from 'react-date-picker';
+import 'react-date-picker/index.css';
 
-const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
-    return (
+const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors,isSaving}) => {
+       return (
         <form>
             <h1>Manage Course</h1>
             <TextInput
@@ -35,10 +37,12 @@ const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
                 value={course.length}
                 onChange={onChange}
                 error={errors.length}/>
-            
+            <DateField
+                dateFormat="ddd MMM DD YYYY"
+            />
             <input 
                 type="submit"
-                disabled={saving}
+                disabled={isSaving||saving}
                 value={saving ? 'Saving...' : 'Save'}
                 className="btn btn-primary"
                 onClick={onSave} />
@@ -48,6 +52,7 @@ const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
 
 CourseForm.propTypes = {
     course: React.PropTypes.object.isRequired,
+    isSaving:React.PropTypes.bool,
     allAuthors: React.PropTypes.array,
     onSave: React.PropTypes.func.isRequired,
     onChange: React.PropTypes.func.isRequired,
