@@ -1,8 +1,7 @@
 import React from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
-import { DateField } from 'react-date-picker';
-import 'react-date-picker/index.css';
+import Datepicker from '../common/Datepicker';
 
 const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors,isSaving}) => {
        return (
@@ -37,8 +36,9 @@ const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors,isSavi
                 value={course.length}
                 onChange={onChange}
                 error={errors.length}/>
-            <DateField
+            <Datepicker
                 dateFormat="ddd MMM DD YYYY"
+                currentDate={new Date()}
             />
             <input 
                 type="submit"

@@ -47,12 +47,6 @@ class ManageCoursePage extends React.Component {
     }
 
     updateCourseState(event) {
-        debugger;
-        console.log(moment)
-        var d = moment(event);
-        d.month(); // 1
-        d.format('ddd MMM DD YYYY'); // 'Mon Feb 01 2016'
-        console.log(d);
         const field = event.target.name;
         let course = this.state.course;
         course[field] = event.target.value;
