@@ -1,7 +1,9 @@
 import React from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
-import Datepicker from '../common/Datepicker';
+//import YearNavigation from '../common/YearNavigation';
+import DateRangePicker from '../common/DateRangePicker';
+
 
 const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors,isSaving}) => {
        return (
@@ -36,16 +38,18 @@ const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors,isSavi
                 value={course.length}
                 onChange={onChange}
                 error={errors.length}/>
-            <Datepicker
-                dateFormat="ddd MMM DD YYYY"
-                currentDate={new Date()}
-            />
+            {/*<YearNavigation/>*/}
+           
             <input 
                 type="submit"
                 disabled={isSaving||saving}
                 value={saving ? 'Saving...' : 'Save'}
                 className="btn btn-primary"
                 onClick={onSave} />
+
+                <DateRangePicker
+                />
+    
         </form>
     );
 };

@@ -11,7 +11,7 @@ class Datepicker extends React.Component{
         updateOnDateClick={this.props.updateDate?this.props.updateDate:true}
         collapseOnDateClick={true}
         defaultValue={this.props.currentDate}
-        minDate={new Date()}
+        mindate={this.props.max}
     >
   <DatePicker
       navigation={true}
