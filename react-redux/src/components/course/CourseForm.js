@@ -2,7 +2,7 @@ import React from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 //import YearNavigation from '../common/YearNavigation';
-import DateRangePicker from '../common/DateRangePicker';
+import YearNavigation from '../common/YearNavigation';
 
 
 const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors,isSaving}) => {
@@ -38,7 +38,7 @@ const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors,isSavi
                 value={course.length}
                 onChange={onChange}
                 error={errors.length}/>
-            {/*<YearNavigation/>*/}
+           
            
             <input 
                 type="submit"
@@ -46,10 +46,7 @@ const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors,isSavi
                 value={saving ? 'Saving...' : 'Save'}
                 className="btn btn-primary"
                 onClick={onSave} />
-
-                <DateRangePicker
-                />
-    
+     <YearNavigation/>
         </form>
     );
 };

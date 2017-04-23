@@ -1,14 +1,47 @@
-import React from 'react';
+/*import React from 'react';
+import DayPicker from 'react-day-picker';
 import moment from 'moment';
-import DayPicker, { DateUtils } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
+import { DateUtils } from 'react-day-picker';
+
 
 const currentYear = new Date().getFullYear();
 const fromMonth = new Date(currentYear, 0, 1, 0, 0);
 const toMonth = new Date(currentYear + 10, 11, 31, 23, 59);
 
+// Component will receive date, locale and localeUtils props
+function YearMonthForm({ date, localeUtils, onChange }) {
+  const months = localeUtils.getMonths();
 
-export default class YearNavigation extends React.Component {
+  const years = [];
+  for (let i = fromMonth.getFullYear(); i <= toMonth.getFullYear(); i += 1) {
+    years.push(i);
+  }
+
+  const handleChange = function handleChange(e) {
+    const { year, month } = e.target.form;
+    onChange(newDate(year.value, month.value));
+  };
+const  onChange = function(e) {
+    this.setState({selected: e.target.form});
+  },
+  return (
+    <form className="DayPicker-Caption">
+      <select name="month" onChange={handleChange} value={date.getMonth()}>
+        {months.map((month, i) => <option key={i} value={i}>{month}</option>)}
+      </select>
+      <select name="year" onChange={handleChange} value={date.getFullYear()}>
+        {years.map((year, i) => (
+          <option key={i} value={year}>
+            {year}
+          </option>
+        ))}
+      </select>
+    </form>
+  );
+}
+
+export default class YearMonthDateNavigation extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -23,7 +56,6 @@ export default class YearNavigation extends React.Component {
     this.handleDayClick = this.handleDayClick.bind(this);
 
   }
-
   showCurrentDate() {
     this.setState({
       showDatePicker: true
@@ -57,39 +89,17 @@ export default class YearNavigation extends React.Component {
   }
 
   render() {
-    const { from, to } = this.state;
-    const selectedDay = from ? moment(from).format('L') + '-' + moment(to).format('L') : new Date(); //moment(this.state.value, 'L', true).toDate();
-    //const selectedDay = 'You chose from' + {moment(from).format('L') +{' '} +'to'+{' '}{moment(to).format('L')}
-
     return (
-      <div>
-        <p>
-          <input
-            type="text"
-            value={selectedDay}
-            placeholder="mm/dd/yyyy"
-            onChange={this.handleInputChange}
-            onFocus={this.showCurrentDate}
-          />
-        </p>
-        <div>
-          {
-            this.state.showDatePicker ?
-              <DayPicker className="YearNavigation"
-                canChangeMonth={false}
-                initialMonth={this.state.month}
-                selectedDays={selectedDay}
-                onDayClick={this.handleDayClick}
-                numberOfMonths={1}
-                maxDate={new Date()}
-                selectedDays={[from, { from, to }]}
-                fromMonth={fromMonth}
-                toMonth={toMonth}
-              />:<div />
+      <div className="YearNavigation">
+        <DayPicker
+          month={this.state.month}
+          fromMonth={fromMonth}
+          toMonth={toMonth}
+          captionElement={
+            <YearMonthForm onChange={this.handleYearMonthChange} />
           }
-          
-        </div>
+        />
       </div>
     );
   }
-  }
+}*/
