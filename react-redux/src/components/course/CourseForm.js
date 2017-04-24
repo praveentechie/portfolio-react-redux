@@ -2,7 +2,8 @@ import React from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 //import YearNavigation from '../common/YearNavigation';
-import YearNavigation from '../common/YearNavigation';
+import YearMonthDateNavigation from '../common/YearMonthDateNavigation';
+
 
 
 const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors,isSaving}) => {
@@ -46,7 +47,7 @@ const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors,isSavi
                 value={saving ? 'Saving...' : 'Save'}
                 className="btn btn-primary"
                 onClick={onSave} />
-     <YearNavigation/>
+     <YearMonthDateNavigation/>
         </form>
     );
 };
