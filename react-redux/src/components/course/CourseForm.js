@@ -2,7 +2,8 @@ import React from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 //import YearNavigation from '../common/YearNavigation';
-import YearMonthDateNavigation from '../common/YearMonthDateNavigation';
+import YearMonthDateNavigation from '../common/DatePickertester';
+import DropDown from '../common/DropDown';
 
 
 
@@ -39,7 +40,7 @@ const CourseForm = ({course, allAuthors, onSave, onChange, saving, errors,isSavi
                 value={course.length}
                 onChange={onChange}
                 error={errors.length}/>
-           
+           <DropDown/>
            
             <input 
                 type="submit"
