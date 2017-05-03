@@ -17,19 +17,22 @@ export default class ResultPage extends Component {
         marketValue: 160000000000,
         purchaseType: 'BUY',
         comments: '',
-        validated: ''
+        validated: '',
+        id: 1
       }, {
-        fundName: 'Dreyfus Cash Mgmt',
-        accountName: 'ABCFirm',
-        provider: 'Dreyfus',
-        providerId: '26188J206',
+        id: 2,
+        fundName: 'JP Morgan - EUR',
+        accountName: 'ABCFirm, International',
+        provider: 'J.P. Morgan',
+        providerId: '4812A2603',
         currency: 'USD',
-        marketValue: 160000000000,
-        purchaseType: 'BUY',
+        marketValue: 175000000000,
+        purchaseType: 'SELL',
         comments: '',
         validated: 'SUCCESS'
       }],
-      amount: 1000
+      amount: 1000,
+      currentItem: null
     };
   }
   onValueChange(field, value, id) {
@@ -41,10 +44,10 @@ export default class ResultPage extends Component {
     });
   }
   render() {
-    let { resultItem, amount } = this.state;
+    let { resultItem, amount, currentItem } = this.state;
     return (
       <div className="result-page">
-        <div>
+        <div style={{marginBottom: '20px'}}>
         <span className="title-item">Total: {resultItem.length}</span>
         <span className="title-item">Amount: {amount}</span>
         </div>
@@ -53,6 +56,10 @@ export default class ResultPage extends Component {
             return (
               <ResultItem key={index} onValueChange={this.onValueChange}
                 {...item}
+                currentItem={currentItem}
+                setCurrent={(id) => {
+                  this.setState({currentItem: id});
+                }}
               />
             );
           })

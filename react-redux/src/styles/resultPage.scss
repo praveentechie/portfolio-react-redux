@@ -12,7 +12,17 @@
     border-radius: 8px;
     background-color: #fff;
     margin-bottom: 15px;
+    box-shadow: 0px 0px 15px transparent;
+    transition: opacity .3s ease-in, box-shadow .3s ease-in;
+    opacity: 1;
 
+    &.current-item {
+      box-shadow: 0px 0px 20px #333;
+      opacity: 1;
+    }
+    &:not(.current-item) {
+      opacity: .5;
+    }
     &.default-bar {
       border-left-color: #ddd;
     }
@@ -93,7 +103,7 @@
         display: none;
       }
     }
-    
+
     .settlement-options {
       padding: 0 10px;
       min-width: 200px;

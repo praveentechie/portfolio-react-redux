@@ -11,6 +11,9 @@ export default class ResultItem extends Component {
   constructor(props) {
     super(props);
   }
+  displayCurrency(num) {
+    return `$${num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}`
+  }
   render() {
     let {
       purchaseType, onValueChange,
@@ -19,16 +22,20 @@ export default class ResultItem extends Component {
       provider,
       providerId,
       currency,
-      marketValue,
-      comments,
-      validated
+      marketValue, currentItem,
+      comments, id,
+      validated, setCurrent
     } = this.props;
     const validationClass = !validated ? 'default-bar' :
       validated === "SUCCESS" ? "success-bar" :
       validated === "ERROR" ? "error-bar" :
       validated === "WARNING" ? "warning-bar" : "";
     return (
-      <div className={`${validationClass} result-item`}>
+      <div onClick={setCurrent.bind(this, id)}
+        className={
+          `${validationClass} result-item ${currentItem === id ? 'current-item' : ''}`
+        }
+      >
         <div className="top-section">
           <TextInput name="fundName"
             wrapperClass="underline-field"
@@ -54,7 +61,7 @@ export default class ResultItem extends Component {
           />
           <ViewField wrapperClass="payment-info"
             label="Market Value (USD)"
-            value={marketValue}
+            value={this.displayCurrency(marketValue)}
           />
         </div>
         <div className="bottom-section">

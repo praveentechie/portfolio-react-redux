@@ -11,8 +11,9 @@ const ViewField = ({value, label, wrapperClass}) => {
 };
 
 ViewField.propTypes = {
+  wrapperClass: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 export default ViewField;
