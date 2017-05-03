@@ -24,6 +24,7 @@ class DropDown extends React.Component{
   render() {
     return(
     <Select
+        className={`${this.props.wrapperClass || ''} drop-down`}
         name="form-field-name"
         value={this.state.val}
         options={options}
