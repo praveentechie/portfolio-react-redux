@@ -1,0 +1,105 @@
+.result-page {
+  padding: 15px;
+  background-color: #eee;
+
+  & .title-item {
+    margin-right: 10px;
+  }
+
+  .result-item {
+    border-left: 8px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 15px;
+
+    &.default-bar {
+      border-left-color: #ddd;
+    }
+    &.success-bar {
+      border-left-color: green;
+    }
+
+    .top-section {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+      display: flex;
+
+      & > div {
+        flex-grow: 1;
+        margin: 0 5px;
+      }
+    }
+
+    .bottom-section {
+      display: flex;
+      padding: 5px;
+
+      & > div{
+        flex-grow: 2;
+        margin: 0 5px;
+
+        &:first-child{
+          flex-grow: 1;
+        }
+      }
+    }
+
+    .currency-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      .form-group label[for='number']{
+        display: none;
+      }
+    }
+    .radio-button {
+      margin-right: 10px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+
+      .radio-component {
+        margin-top: 2px;
+      }
+
+      .radio-inline {
+        padding-left: 5px;
+      }
+    }
+    .text-area {
+      resize: none;
+    }
+    .button-group-container .btn-title {
+      display: block;
+    }
+    .payment-info .field-label {
+      display: block;
+      font-weight: 100;
+      opacity: .8;
+    }
+
+    .underline-field {
+      margin: 0;
+      .form-control {
+        border: 0;
+        box-shadow: none;
+        border-bottom: 1px solid #ddd;
+        border-bottom-style: dashed;
+        border-radius: 0;
+        outline: none;
+      }
+      label {
+        display: none;
+      }
+    }
+    
+    .settlement-options {
+      padding: 0 10px;
+      min-width: 200px;
+      border-right: 1px solid #ddd;
+      border-left: 1px solid #ddd;
+    }
+
+  }
+}

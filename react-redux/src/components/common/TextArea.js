@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 
-const TextInput = ({name, label, onChange, placeholder, value, error, wrapperClass}) => {
-    wrapperClass = wrapperClass + ' form-group';
+const TextInput = ({name, label, onChange, placeholder, value, error, rows}) => {
+    let wrapperClass = 'form-group';
     if(error && error.length > 0){
         wrapperClass += " " + 'has-error';
     }
@@ -10,10 +10,10 @@ const TextInput = ({name, label, onChange, placeholder, value, error, wrapperCla
         <div className={wrapperClass}>
             <label htmlFor={name}>{label}</label>
             <div className="field">
-                <input
-                    type="text"
+                <textarea
                     name={name}
-                    className="form-control"
+                    rows={rows || 2}
+                    className="form-control text-area"
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange} />
