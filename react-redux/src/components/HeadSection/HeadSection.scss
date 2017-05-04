@@ -1,0 +1,10 @@
+:local(.headSection).head-section {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+  display: flex;
+
+  & > div {
+    flex-grow: 1;
+    margin: 0 5px;
+  }
+}

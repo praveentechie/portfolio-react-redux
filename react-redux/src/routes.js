@@ -4,7 +4,7 @@ import App from './components/App';
 import HomePage from './components/home/HomePage';
 import AboutPage from './components/about/AboutPage';
 import CoursesPage from './components/course/CoursesPage';
-import ResultPage from './components/ResultPage';
+import ResultPage from './feature/ResultPage';
 import ManageCoursePage from './components/course/ManageCoursePage';
 
 export default(

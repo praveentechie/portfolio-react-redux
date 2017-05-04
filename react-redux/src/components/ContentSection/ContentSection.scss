@@ -1,0 +1,13 @@
+:local(.contentSection).content-section {
+  display: flex;
+  padding: 5px;
+
+  & > div{
+    flex-grow: 2;
+    margin: 0 5px;
+
+    &:first-child{
+      flex-grow: 1;
+    }
+  }
+}

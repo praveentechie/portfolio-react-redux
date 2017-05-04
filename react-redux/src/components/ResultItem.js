@@ -1,11 +1,16 @@
 import React, { Component }   from "react";
-import ButtonGroup from "./ButtonGroup";
+import ButtonGroup from "./ButtonGroup/ButtonGroup";
+import Button from "./Button/Button";
 import RadioButton from "./RadioButton";
 import TextInput from "./common/TextInput";
 import TextArea from "./common/TextArea";
 import DropDown from "./common/DropDown";
 import ViewField from "./common/ViewField";
 import DatePicker from "./common/DatePickertester";
+import HeadSection from "./HeadSection/HeadSection";
+import ContentSection from "./ContentSection/ContentSection";
+
+import cx from 'classnames';
 
 export default class ResultItem extends Component {
   constructor(props) {
@@ -32,11 +37,9 @@ export default class ResultItem extends Component {
       validated === "WARNING" ? "warning-bar" : "";
     return (
       <div onClick={setCurrent.bind(this, id)}
-        className={
-          `${validationClass} result-item ${currentItem === id ? 'current-item' : ''}`
-        }
+        className={cx({"current-item":currentItem === id}, "result-item", validationClass)}
       >
-        <div className="top-section">
+        <HeadSection>
           <TextInput name="fundName"
             wrapperClass="underline-field"
             value={fundName}
@@ -63,11 +66,18 @@ export default class ResultItem extends Component {
             label="Market Value (USD)"
             value={this.displayCurrency(marketValue)}
           />
-        </div>
-        <div className="bottom-section">
-          <ButtonGroup onClickPurchase={onValueChange}
-            selectedValue={purchaseType}
-          />
+        </HeadSection>
+        <ContentSection>
+          <ButtonGroup groupLabel="Side">
+            <Button buttonLabel="Buy"
+              className={cx({"btn-primary":purchaseType === "BUY"})}
+              onClick={onValueChange.bind(this, "purchaseType", "BUY")}
+            />
+            <Button buttonLabel="Sell"
+              className={cx({"btn-danger":purchaseType === "SELL"})}
+              onClick={onValueChange.bind(this, "purchaseType", "SELL")}
+            />
+          </ButtonGroup>
           <div className="currency-wrapper">
             <div style={{display: "flex", justifyContent: "center"}}>
               <RadioButton label="Currency" value="CURRENCY"
@@ -119,7 +129,7 @@ export default class ResultItem extends Component {
             placeholder="Enter Comments"
             onChange={(e)=> {onValueChange('comments', e.target.value)}}
           />
-        </div>
+        </ContentSection>
       </div>
     );
   }
